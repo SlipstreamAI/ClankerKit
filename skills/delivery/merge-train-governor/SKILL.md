@@ -1,7 +1,7 @@
 ---
 name: "merge-train-governor"
 category: "delivery"
-description: "Delivery super skill for single-lane merge governance with queue triage, validator gates, review hygiene, and controlled promotion."
+description: "Delivery skill for single-lane merge governance with queue triage, validator gates, review hygiene, and controlled promotion."
 status: "provisional"
 recommended-modes:
   - pre-merge

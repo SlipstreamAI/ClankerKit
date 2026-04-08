@@ -1,7 +1,7 @@
 ---
 name: "truth-recovery-program"
 category: "governance"
-description: "Repo-wide governance super skill that runs merged-truth, intent-drift, and queue-rebaseline audits under one parent program with deterministic classifications and finding dispositions."
+description: "Repo-wide governance skill that runs merged-truth, intent-drift, and queue-rebaseline audits under one parent program with deterministic classifications and finding dispositions."
 status: "provisional"
 recommended-modes:
   - repo-truth-recovery

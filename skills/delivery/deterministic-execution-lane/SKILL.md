@@ -1,7 +1,7 @@
 ---
 name: "deterministic-execution-lane"
 category: "delivery"
-description: "Execution super skill for resumable, fail-closed, checkpoint-driven implementation lanes that continue until done or a concrete blocker."
+description: "Execution skill for resumable, fail-closed, checkpoint-driven implementation lanes that continue until done or a concrete blocker."
 status: "provisional"
 recommended-modes:
   - implementation

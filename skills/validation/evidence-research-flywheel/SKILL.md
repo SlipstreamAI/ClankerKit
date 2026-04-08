@@ -1,7 +1,7 @@
 ---
 name: "evidence-research-flywheel"
 category: "validation"
-description: "Validation super skill for evidence-first research, claim scoring, and bounded planning handoff without losing source traceability."
+description: "Validation skill for evidence-first research, claim scoring, and bounded planning handoff without losing source traceability."
 status: "provisional"
 recommended-modes:
   - research
