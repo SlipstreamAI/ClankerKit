@@ -10,6 +10,7 @@ Reduce skill sprawl by consolidating overlapping workflows into a smaller set of
 2. `deterministic-execution-lane`
 3. `merge-train-governor`
 4. `evidence-research-flywheel`
+5. `orchestrator-hardening`
 
 ## Consolidation map
 
@@ -45,6 +46,14 @@ Consolidates:
 - evidence intake and normalization
 - confidence-scored research synthesis
 - bounded planning handoff for implementation
+
+## `orchestrator-hardening`
+
+Consolidates:
+
+- orchestration contract bootstrapping
+- lane routing and escalation policy definition
+- continuation authority and stop-boundary hardening
 
 ## Parameterization requirements
 
