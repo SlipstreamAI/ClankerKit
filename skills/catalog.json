@@ -1,0 +1,516 @@
+{
+  "schema_version": 1,
+  "skill_count": 21,
+  "skills": [
+    {
+      "name": "trace-the-failure",
+      "category": "debugging",
+      "description": "Debugging skill for deterministic reproduction and boundary-by-boundary tracing of failures until root cause or concrete blocker is identified.",
+      "status": "provisional",
+      "recommended_modes": [
+        "incident",
+        "bug-hunt",
+        "regression-triage"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "playwright",
+        "repo-tools"
+      ],
+      "tags": [
+        "debugging",
+        "failure-tracing",
+        "reproduction",
+        "root-cause"
+      ],
+      "path": "skills/debugging/trace-the-failure/SKILL.md"
+    },
+    {
+      "name": "evidence-research-flywheel",
+      "category": "validation",
+      "description": "Validation skill for evidence-first research, claim scoring, and bounded planning handoff without losing source traceability.",
+      "status": "provisional",
+      "recommended_modes": [
+        "research",
+        "planning",
+        "strategy-refresh"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "browser",
+        "repo-tools"
+      ],
+      "tags": [
+        "research",
+        "evidence",
+        "planning",
+        "traceability"
+      ],
+      "path": "skills/validation/evidence-research-flywheel/SKILL.md"
+    },
+    {
+      "name": "completion-claim-audit",
+      "category": "validation",
+      "description": "Validation skill for auditing completion claims against actual code changes, runtime behavior, and delivery artifacts.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pr-audit",
+        "release-audit"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "validation",
+        "done-claims",
+        "audit",
+        "evidence"
+      ],
+      "path": "skills/validation/completion-claim-audit/SKILL.md"
+    },
+    {
+      "name": "map-the-system",
+      "category": "repo-understanding",
+      "description": "Repo-understanding skill for building a practical map of entrypoints, boundaries, dependencies, and blast radius before broad edits.",
+      "status": "provisional",
+      "recommended_modes": [
+        "discovery",
+        "pre-implementation",
+        "incident"
+      ],
+      "allowed_tools": [
+        "bash",
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "repo-understanding",
+        "system-mapping",
+        "entrypoints",
+        "blast-radius"
+      ],
+      "path": "skills/repo-understanding/map-the-system/SKILL.md"
+    },
+    {
+      "name": "find-the-real-entrypoints",
+      "category": "repo-understanding",
+      "description": "Repo-understanding skill for locating true runtime entrypoints and separating them from test scaffolds, demos, and dead paths.",
+      "status": "provisional",
+      "recommended_modes": [
+        "discovery",
+        "pre-implementation"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "repo-understanding",
+        "entrypoints",
+        "runtime-paths"
+      ],
+      "path": "skills/repo-understanding/find-the-real-entrypoints/SKILL.md"
+    },
+    {
+      "name": "blast-radius-scan",
+      "category": "repo-understanding",
+      "description": "Repo-understanding skill for estimating change impact across code, runtime boundaries, and operational workflows before broad edits or merge.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pre-implementation",
+        "pr-audit"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "repo-understanding",
+        "blast-radius",
+        "change-risk"
+      ],
+      "path": "skills/repo-understanding/blast-radius-scan/SKILL.md"
+    },
+    {
+      "name": "production-readiness-pass",
+      "category": "hardening",
+      "description": "Hardening skill for auditing operational readiness across resilience, observability, rollback, and runtime assumption integrity.",
+      "status": "provisional",
+      "recommended_modes": [
+        "release-readiness",
+        "hardening-pass"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "hardening",
+        "production-readiness",
+        "resilience"
+      ],
+      "path": "skills/hardening/production-readiness-pass/SKILL.md"
+    },
+    {
+      "name": "truthforge",
+      "category": "governance",
+      "description": "Governance skill for detecting false-confidence testing, weak runtime proof, and synthetic evidence masquerading as production readiness.",
+      "status": "provisional",
+      "recommended_modes": [
+        "incident",
+        "pr-audit",
+        "repo-truth-recovery",
+        "continuous-governance"
+      ],
+      "allowed_tools": [
+        "bash",
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "playwright",
+        "browser",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "validation",
+        "runtime-proof",
+        "merge-readiness",
+        "anti-proxy-optimization"
+      ],
+      "path": "skills/governance/truthforge/SKILL.md"
+    },
+    {
+      "name": "truth-recovery-program",
+      "category": "governance",
+      "description": "Repo-wide governance skill that runs merged-truth, intent-drift, and queue-rebaseline audits under one parent program with deterministic classifications and finding dispositions.",
+      "status": "provisional",
+      "recommended_modes": [
+        "repo-truth-recovery",
+        "incident",
+        "governance-reset"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "playwright",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "truth-recovery",
+        "evidence",
+        "queue-rebaseline"
+      ],
+      "path": "skills/governance/truth-recovery-program/SKILL.md"
+    },
+    {
+      "name": "runtime-proof",
+      "category": "validation",
+      "description": "Validation skill for testing whether a runtime-visible claim is proven by runtime-relevant evidence instead of synthetic harness success.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pr-audit",
+        "incident",
+        "pre-merge"
+      ],
+      "allowed_tools": [
+        "bash",
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "playwright",
+        "browser"
+      ],
+      "tags": [
+        "validation",
+        "runtime-proof",
+        "claim-verification",
+        "evidence-quality"
+      ],
+      "path": "skills/validation/runtime-proof/SKILL.md"
+    },
+    {
+      "name": "skill-intake-gate",
+      "category": "governance",
+      "description": "Governance skill for screening contributed skills for safety, determinism, and quality before they are accepted into a shared repository.",
+      "status": "provisional",
+      "recommended_modes": [
+        "contribution-review",
+        "security-review"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "contribution",
+        "safety",
+        "determinism"
+      ],
+      "path": "skills/governance/skill-intake-gate/SKILL.md"
+    },
+    {
+      "name": "evidence-contract",
+      "category": "governance",
+      "description": "Governance skill for defining a minimum evidence contract that all claims, audits, and readiness decisions must satisfy.",
+      "status": "provisional",
+      "recommended_modes": [
+        "governance-reset",
+        "pr-audit"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "evidence",
+        "contracts"
+      ],
+      "path": "skills/governance/evidence-contract/SKILL.md"
+    },
+    {
+      "name": "escalation-and-blockers",
+      "category": "governance",
+      "description": "Governance skill for standardizing escalation triggers, blocker definitions, and pause boundaries across agent-led workflows.",
+      "status": "provisional",
+      "recommended_modes": [
+        "incident",
+        "governance-reset",
+        "pre-merge"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "escalation",
+        "blockers",
+        "fail-closed"
+      ],
+      "path": "skills/governance/escalation-and-blockers/SKILL.md"
+    },
+    {
+      "name": "deterministic-gate",
+      "category": "governance",
+      "description": "Governance skill for defining and enforcing explicit gate criteria for merge, release, or promotion decisions.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pre-merge",
+        "release-readiness"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "gates",
+        "determinism",
+        "readiness"
+      ],
+      "path": "skills/governance/deterministic-gate/SKILL.md"
+    },
+    {
+      "name": "operator-handoff",
+      "category": "documentation",
+      "description": "Documentation skill for producing operational handoff artifacts that let another human or agent safely continue work without hidden context.",
+      "status": "provisional",
+      "recommended_modes": [
+        "handoff",
+        "post-merge",
+        "incident-close"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "documentation",
+        "handoff",
+        "operations"
+      ],
+      "path": "skills/documentation/operator-handoff/SKILL.md"
+    },
+    {
+      "name": "safe-pr-prep",
+      "category": "delivery",
+      "description": "Delivery skill for preparing high-signal pull requests with explicit risk framing, proof receipts, and reviewer-ready context.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pre-merge",
+        "pr-prep"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "delivery",
+        "pull-request",
+        "reviewer-experience"
+      ],
+      "path": "skills/delivery/safe-pr-prep/SKILL.md"
+    },
+    {
+      "name": "merge-train-governor",
+      "category": "delivery",
+      "description": "Delivery skill for single-lane merge governance with queue triage, validator gates, review hygiene, and controlled promotion.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pre-merge",
+        "merge-train",
+        "release-readiness"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "merge-train",
+        "governance",
+        "delivery",
+        "readiness"
+      ],
+      "path": "skills/delivery/merge-train-governor/SKILL.md"
+    },
+    {
+      "name": "deterministic-execution-lane",
+      "category": "delivery",
+      "description": "Execution skill for resumable, fail-closed, checkpoint-driven implementation lanes that continue until done or a concrete blocker.",
+      "status": "provisional",
+      "recommended_modes": [
+        "implementation",
+        "remediation",
+        "long-running-lane"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "delivery",
+        "checkpoints",
+        "resumable",
+        "fail-closed"
+      ],
+      "path": "skills/delivery/deterministic-execution-lane/SKILL.md"
+    },
+    {
+      "name": "definition-of-done-check",
+      "category": "delivery",
+      "description": "Delivery skill for validating that implementation, evidence, docs, and operational handoff meet explicit definition-of-done criteria.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pre-merge",
+        "release-readiness"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "delivery",
+        "done-criteria",
+        "readiness"
+      ],
+      "path": "skills/delivery/definition-of-done-check/SKILL.md"
+    },
+    {
+      "name": "orchestrator-hardening",
+      "category": "governance",
+      "description": "Governance skill for bootstrapping and hardening deterministic orchestration and capability routing contracts in consuming repositories.",
+      "status": "provisional",
+      "recommended_modes": [
+        "bootstrap",
+        "governance-reset",
+        "continuous-governance"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "repo-tools"
+      ],
+      "tags": [
+        "governance",
+        "orchestration",
+        "routing",
+        "escalation",
+        "proof-policy"
+      ],
+      "path": "skills/governance/orchestrator-hardening/SKILL.md"
+    },
+    {
+      "name": "test-surface-skeptic",
+      "category": "validation",
+      "description": "Validation skill for assessing whether test coverage proves meaningful behavior across real risk surfaces or only synthetic wiring.",
+      "status": "provisional",
+      "recommended_modes": [
+        "pr-audit",
+        "test-audit"
+      ],
+      "allowed_tools": [
+        "git",
+        "rg",
+        "python",
+        "pytest",
+        "repo-tools"
+      ],
+      "tags": [
+        "validation",
+        "tests",
+        "skepticism",
+        "coverage-quality"
+      ],
+      "path": "skills/validation/test-surface-skeptic/SKILL.md"
+    }
+  ]
+}

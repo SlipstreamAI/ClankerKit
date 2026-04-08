@@ -11,6 +11,7 @@ Reduce skill sprawl by consolidating overlapping workflows into a smaller set of
 3. `merge-train-governor`
 4. `evidence-research-flywheel`
 5. `orchestrator-hardening`
+6. `skill-intake-gate`
 
 ## Consolidation map
 
@@ -54,6 +55,14 @@ Consolidates:
 - orchestration contract bootstrapping
 - lane routing and escalation policy definition
 - continuation authority and stop-boundary hardening
+
+## `skill-intake-gate`
+
+Consolidates:
+
+- contribution safety screening
+- deterministic contract validation for contributed skills
+- policy and malicious-pattern gate enforcement
 
 ## Parameterization requirements
 

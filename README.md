@@ -4,6 +4,17 @@ Skills for agents that ship real software.
 
 ClankerKit is a public kit of reusable skills for coding agents to build, validate, debug, and harden real software.
 
+## Plain English: Why Give This To An Agent?
+
+If you point an agent at ClankerKit, it gets reusable operating playbooks instead of improvising from scratch every session.
+
+That usually means:
+
+- fewer shallow fixes
+- fewer proofless completion claims
+- better escalation when risk is high
+- clearer handoffs you can inspect
+
 ## What is a skill?
 
 A skill is a reusable operating unit that tells an agent how to do one specific kind of work with clear scope, evidence standards, and handoff output. It is not just a prompt. A good skill is inspectable, testable, adaptable, and safe to run across repositories.
@@ -45,14 +56,24 @@ ClankerKit is public and usable now, but still early. Expect iteration in skill 
 3. Keep local adaptations near the consuming repo and track the delta.
 4. Promote only when a skill proves useful across multiple incidents or PRs.
 
+## Quick Start
+
+1. Choose one skill from [`docs/skills-index.md`](/C:/DEV2/ClankerKit/docs/skills-index.md).
+2. Point your agent to this repository and ask it to apply that skill to one real task.
+3. Require the skill handoff format in your PR or incident artifact.
+4. Add one governance or validation check from `checks/`.
+5. Expand to a small bundle of skills after the first win.
+
 ## Directory map
 
 - `skills/` reusable skills organized by operating domain
+- `skills/catalog.json` machine-readable skill catalog for agent discovery
 - `checks/` short skeptical checklists for review and gating
 - `patterns/` durable operating patterns for loops and gates
 - `templates/` canonical writing templates for new skills and checks
 - `examples/` concrete invocation and loop examples
 - `docs/` taxonomy, authoring, and consumption guidance
+- `scripts/` validation and catalog tooling
 
 ## Stability model
 
@@ -71,6 +92,19 @@ Contributions should stay content-first and operationally concrete.
 - avoid abstraction unless it removes real repetition
 - include realistic examples and deterministic handoff formats
 - keep language crisp and avoid hype
+
+See [`CONTRIBUTING.md`](/C:/DEV2/ClankerKit/CONTRIBUTING.md) for required contribution gates and safety checks.
+
+## Trust And Safety
+
+ClankerKit accepts contributed skills, but they must pass policy and determinism gates before merge.
+
+- required structure and frontmatter checks
+- banned risky-pattern checks
+- deterministic output-contract checks
+- CODEOWNERS review on critical categories
+
+See [`SECURITY.md`](/C:/DEV2/ClankerKit/SECURITY.md) for security reporting.
 
 ## Philosophy
 

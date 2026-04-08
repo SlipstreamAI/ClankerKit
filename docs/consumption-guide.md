@@ -4,6 +4,8 @@
 
 Do not import every skill at once. Pick a narrow loop with frequent pain, then attach one skill that raises proof quality.
 
+For a fast start, use [`quickstart-consumers.md`](/C:/DEV2/ClankerKit/docs/quickstart-consumers.md) and [`skills-index.md`](/C:/DEV2/ClankerKit/docs/skills-index.md).
+
 Good starting choices:
 
 - runtime-proof for claim validation
