@@ -1,13 +1,12 @@
 # ClankerKit
 
-
-Agent in the Arena
+## Agent in the Arena
 
 It is not the critic who counts, nor the one who surveys this new terrain from a distance and mistakes skepticism for understanding. Credit belongs to the engineer in the arena, whose work now extends beyond implementation into orchestration, discernment, and the difficult art of making powerful systems behave usefully under constraint. For in this era, engineering is not only the writing of code, but the steering of intelligence, the shaping of uncertainty, and the building of proof where intuition once sufficed. The agentic engineer does not forsake the old virtues of the craft, but carries them forward into a landscape where judgment matters even more than speed, and where clarity must stand where confidence alone too often pretends to. He is not lesser for working in this way, but rather among the first to embody what engineering is becoming, as the arena shifts beneath us and the craft moves with it. The arena has changed, but the dignity of the work remains, and perhaps even deepens, for those willing to meet it as it is.
+
 Skills for agents that ship real software.
 
-
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+---
 
 ClankerKit is a public kit of reusable skills for coding agents to build, validate, debug, and harden real software.
 
@@ -65,7 +64,7 @@ ClankerKit is public and usable now, but still early. Expect iteration in skill 
 
 ## Quick Start
 
-1. Choose one skill from [`docs/skills-index.md`](/C:/DEV2/ClankerKit/docs/skills-index.md).
+1. Choose one skill from [`docs/skills-index.md`](docs/skills-index.md).
 2. Point your agent to this repository and ask it to apply that skill to one real task.
 3. Require the skill handoff format in your PR or incident artifact.
 4. Add one governance or validation check from `checks/`.
@@ -100,7 +99,7 @@ Contributions should stay content-first and operationally concrete.
 - include realistic examples and deterministic handoff formats
 - keep language crisp and avoid hype
 
-See [`CONTRIBUTING.md`](/C:/DEV2/ClankerKit/CONTRIBUTING.md) for required contribution gates and safety checks.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for required contribution gates and safety checks.
 
 ## Trust And Safety
 
@@ -111,7 +110,7 @@ ClankerKit accepts contributed skills, but they must pass policy and determinism
 - deterministic output-contract checks
 - CODEOWNERS review on critical categories
 
-See [`SECURITY.md`](/C:/DEV2/ClankerKit/SECURITY.md) for security reporting.
+See [`SECURITY.md`](SECURITY.md) for security reporting.
 
 ## Philosophy
 
