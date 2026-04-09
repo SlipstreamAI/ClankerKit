@@ -7,6 +7,7 @@ It is not the critic who counts, nor the one who surveys this new terrain from a
 Skills for agents that ship real software.
 
 
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 ClankerKit is a public kit of reusable skills for coding agents to build, validate, debug, and harden real software.
 
