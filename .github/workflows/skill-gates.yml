@@ -18,8 +18,51 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Validate skill files
         run: python scripts/validate_skills.py
 
-      - name: Validate skill catalog
+      - name: Tooling unit checks
+        run: python scripts/test_tooling.py
+
+      - name: Validate generated catalog
         run: python scripts/build_skill_catalog.py --check
+
+      - name: Markdown
+        run: npx --yes markdownlint-cli2
+
+      - name: Local links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --include-fragments README.md AGENTS.md CONTRIBUTING.md docs site/README.md
+
+      - name: Skills CLI install smoke
+        run: |
+          tmp="$(mktemp -d)"
+          cd "$tmp"
+          npx --yes skills add "$GITHUB_WORKSPACE" --skill runtime-proof --agent claude-code --yes
+          test -f .claude/skills/runtime-proof/SKILL.md
+          grep -q '^name: runtime-proof$' .claude/skills/runtime-proof/SKILL.md
+
+  build-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install and build
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
+
+      # Netlify deploys from netlify.toml. This job only proves the static build.

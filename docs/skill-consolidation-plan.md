@@ -1,5 +1,15 @@
 # ClankerKit Skill Consolidation Plan
 
+## Shipped in the spec migration
+
+- `evidence-contract`, `deterministic-gate`, and `definition-of-done-check` are now `gate-and-done`.
+- `completion-claim-audit` is a mode of `truthforge`. The old checklist is `skills/truthforge/references/completion-claim-audit.md`.
+- Skill paths are flat: `skills/<name>/SKILL.md`.
+
+The map below is the earlier design note. Where it disagrees with the catalog, the catalog wins.
+
+## Original consolidation map
+
 ## Objective
 
 Reduce skill sprawl by consolidating overlapping workflows into a smaller set of high-leverage, repo-agnostic skills with deterministic contracts.

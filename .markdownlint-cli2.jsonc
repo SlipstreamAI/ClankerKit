@@ -1,0 +1,20 @@
+{
+  "globs": [
+    "README.md",
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "docs/**/*.md",
+    "skills/**/*.md",
+    "bundles/**/*.md",
+    "site/README.md"
+  ],
+  "ignores": ["node_modules", "site/dist", "site/.astro"],
+  "config": {
+    "MD013": false,
+    "MD024": false,
+    "MD033": false,
+    "MD036": false,
+    "MD041": false,
+    "MD046": false
+  }
+}

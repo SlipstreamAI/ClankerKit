@@ -1,132 +1,96 @@
 ---
-name: "<skill-name>"
-category: "<debugging|validation|governance|repo-understanding|delivery|hardening|documentation>"
-description: "<one sentence: what this skill does and why>"
-status: "provisional"
-recommended-modes:
-  - pr-audit
-allowed-tools:
-  - git
-  - rg
-  - python
-tags:
-  - "<tag-1>"
+name: example-skill
+description: "Does one job and records the receipt. Use when the operator is in this specific situation."
+license: Apache-2.0
+compatibility: "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg."
+allowed-tools: Bash Read Grep
+metadata:
+  category: validation
+  status: experimental
+  tags: "example"
+  modes: "pr-audit"
+  version: "0.1.0"
+  author: SlipstreamAI
 ---
 
-# <Skill Title>
+# Example Skill
 
-**Tagline:** <single sentence with operator value>
+**Tagline:** One sentence an operator can repeat.
 
 ## Purpose
 
-State the operating problem this skill solves and the boundary of responsibility.
+State the operating problem and the boundary. Name the neighboring skill you will not absorb.
 
 ## Use when
 
-Invoke this skill when:
-
-1. <trigger condition 1>
-2. <trigger condition 2>
-3. <trigger condition 3>
+1. Trigger that a stranger can match from the description alone.
+2. A second concrete trigger.
 
 ## Do not use when
 
-State when this skill is overkill or outside scope.
+- The neighboring job that has its own skill.
 
 ## Inputs
 
-List required and optional inputs. Be explicit about missing-input behavior.
-
-- diff, PR, or commit range
-- stated claim or task objective
-- runtime constraints and available environments
-- logs, traces, or test artifacts
+- Diff, claim, or artifact the procedure requires.
+- What to do when an input is missing: partial, blocked, or a named default.
 
 ## Outputs
 
-Define deterministic output contract. Avoid vague summaries.
-
-- claim interpretation
-- changed surfaces
-- evidence inventory and class
-- open assumptions
-- verdict and remediation
+- The fields the handoff must contain.
+- Status: success, partial, blocked, or failed.
 
 ## Procedure
 
 ### Phase 1: Frame
 
-- restate claim
-- identify risk surfaces
-- define proof standard
+1. Restate the claim.
+2. Name the proof that would change your mind.
 
 ### Phase 2: Gather
 
-- collect evidence
-- classify each artifact
-- mark synthetic versus runtime-relevant evidence
+1. Collect artifacts.
+2. Mark each one synthetic or runtime-relevant.
 
-### Phase 3: Challenge
+### Phase 3: Decide
 
-- probe masking and blind spots
-- test or verify critical assumptions
-- attempt runtime-relevant proof where feasible
-
-### Phase 4: Decide
-
-- classify outcome
-- list remediation
-- declare merge or release readiness
+1. Match the verdict to the artifacts.
+2. List the next action for every gap.
 
 ## Proof requirements
 
-Define minimum proof requirements by claim type.
-
-- internal-only claim: targeted integration evidence may be sufficient
-- runtime-visible claim: include at least one runtime-relevant path
-- boundary-sensitive claim: include at least one failure-mode proof
+- The command, file, or observation that must exist.
+- What is explicitly unmeasured.
 
 ## Common failure patterns
 
-- synthetic harness success mistaken for runtime readiness
-- unverified environment assumptions
-- missing failure-mode coverage
-- assertions that validate shape but not behavior
+- A green harness treated as runtime proof.
+- A verdict that disagrees with the matrix.
 
 ## Adaptation notes
 
-Explain how to adapt for frontend, backend, monorepo, or restricted environments.
+- How to shrink the procedure when a tool or environment is missing.
 
 ## Example invocation
 
 ```text
-Use <skill-name> on PR #321.
+Use example-skill on the current diff.
 
-Functional claim:
+Claim:
 "..."
 
-Focus on:
-- ...
-
-Return:
-- ...
+Return the handoff with commands and results.
 ```
 
 ## Handoff format
 
 ```text
-<Skill Title> Report
+Example Skill Report
 
-Functional claim:
-Changed surfaces:
-Evidence inventory:
-Synthetic masking detected:
-Strongest real-path proof:
-Failure-mode proof:
+Status: success | partial | blocked | failed
+Claim:
+Evidence:
 Unverified assumptions:
-Classification:
-Remediation now:
-Still open:
-Tracked follow-up:
-Readiness verdict:
+Verdict:
+Next action:
 ```

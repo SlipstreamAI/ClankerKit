@@ -6,7 +6,7 @@ Get practical value from ClankerKit in one session without importing the whole l
 
 ## 5-minute setup
 
-1. Pick one skill from [`skills-index.md`](/C:/DEV2/ClankerKit/docs/skills-index.md).
+1. Install one skill using [install.md](install.md), then pick it from [`skills-index.md`](skills-index.md).
 2. Give your agent the skill name and your task context.
 3. Ask for the exact handoff format defined in that skill.
 4. Add one related check from `checks/`.

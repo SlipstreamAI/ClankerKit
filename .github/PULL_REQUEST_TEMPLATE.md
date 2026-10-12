@@ -8,29 +8,27 @@ Describe what changed and why.
 - [ ] Skill update
 - [ ] Check or pattern update
 - [ ] Docs only
-- [ ] Tooling or CI gate update
+- [ ] Tooling, site, or CI gate update
 
 ## Skill quality checklist
 
-- [ ] Frontmatter is valid and complete
-- [ ] Required sections are present
-- [ ] Output contract is deterministic
-- [ ] Proof requirements are explicit
+- [ ] Frontmatter matches the Agent Skills spec (`name`, `description` with `Use when`, string `allowed-tools`, custom fields under `metadata`)
+- [ ] `name` matches `skills/<name>/`
+- [ ] Required sections are present, including a text handoff
+- [ ] Proof requirements name an artifact or an explicit gap
 - [ ] Common failure patterns are concrete
 - [ ] Adaptation notes are repo-agnostic
+- [ ] `python scripts/validate_skills.py` passes
+- [ ] `python scripts/build_skill_catalog.py` was run if skills or bundles changed
 
 ## Safety checklist
 
-- [ ] No auth-bypass or unsafe guidance
+- [ ] No guidance for skipping authentication or safety controls
 - [ ] No destructive default behavior
-- [ ] No exfiltration guidance
+- [ ] No guidance for moving secrets off the host
 - [ ] Escalation and stop boundaries are explicit
-
-## Validation
-
-- [ ] `python scripts/validate_skills.py`
-- [ ] `python scripts/build_skill_catalog.py --check`
+- [ ] New scripts were read with `skill-security-scan` or an equivalent pass
 
 ## Notes for reviewers
 
-Add assumptions, edge cases, and any areas where confidence is lower.
+Add assumptions, edge cases, and any areas where confidence is lower. Status promotions need the real uses that justify them.

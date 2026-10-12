@@ -30,7 +30,7 @@ Every skill should include:
 - example invocation
 - handoff format
 
-Use [`templates/skill-template.md`](/C:/DEV2/ClankerKit/templates/skill-template.md).
+Use [`templates/skill-template.md`](../templates/skill-template.md).
 
 ## Writing style
 

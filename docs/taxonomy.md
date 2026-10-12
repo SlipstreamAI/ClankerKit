@@ -86,6 +86,9 @@ Choose category by dominant operating intent:
 
 ## Stability labels
 
-- `provisional`: expected to evolve quickly
+- `experimental`: new, or not yet used on a real repository
+- `provisional`: useful now, expected to change
 - `stable`: shape and contract are field-tested
 - `deprecated`: maintained only for compatibility
+
+Category is metadata on a flat `skills/<name>/` directory. It is not a folder.

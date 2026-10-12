@@ -1,0 +1,12 @@
+{
+  "behavior": "What the agent should do",
+  "cases": [
+    {
+      "id": "red-ci-log",
+      "input": "The test job failed. Log attached.",
+      "expected": {"skill": "ci-failure-triage"},
+      "grader": "exact-field",
+      "held_out": false
+    }
+  ]
+}

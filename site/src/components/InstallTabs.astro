@@ -1,0 +1,42 @@
+---
+interface Props {
+  commands: Record<string, string>;
+}
+
+const { commands } = Astro.props;
+const tabs = [
+  ["npx", "npx"],
+  ["claude", "Claude Code"],
+  ["cursor", "Cursor"],
+  ["codex", "Codex"],
+  ["grok", "Grok Build"],
+  ["copilot", "Copilot"],
+] as const;
+---
+
+<div data-tabs class="border border-line bg-card">
+  <div class="flex flex-wrap gap-1 border-b border-line bg-paper p-2" role="tablist">
+    {
+      tabs.map(([id, label], index) => (
+        <button
+          type="button"
+          data-tab={id}
+          aria-selected={index === 0 ? "true" : "false"}
+          class="px-2 py-1 font-mono text-xs uppercase tracking-wide aria-selected:bg-plate aria-selected:text-mark"
+        >
+          {label}
+        </button>
+      ))
+    }
+  </div>
+  {
+    tabs.map(([id], index) => (
+      <div data-panel={id} hidden={index !== 0} class="grid gap-3 p-4">
+        <pre class="overflow-x-auto bg-plate p-3 font-mono text-xs text-card">{commands[id]}</pre>
+        <button type="button" data-copy={commands[id]} class="w-fit border border-ink px-3 py-1 text-sm font-semibold">
+          Copy
+        </button>
+      </div>
+    ))
+  }
+</div>

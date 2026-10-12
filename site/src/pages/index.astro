@@ -1,0 +1,101 @@
+---
+import Base from "../layouts/Base.astro";
+import { loadCatalog, repo } from "../lib/content";
+
+const catalog = loadCatalog();
+const counts = new Map<string, number>();
+for (const skill of catalog.skills) {
+  counts.set(skill.category, (counts.get(skill.category) || 0) + 1);
+}
+const categories = [...counts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+const featured = catalog.bundles.filter((bundle) => bundle.name !== "full-catalog");
+const sample = "npx skills add SlipstreamAI/ClankerKit --skill runtime-proof";
+---
+
+<Base
+  title="ClankerKit skills"
+  description="An open catalog of agent skills for building, testing, securing, and proving software. Claims need receipts."
+>
+  <main>
+    <section class="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[1.3fr_0.9fr] lg:items-end">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-link">Agent skills catalog</p>
+        <h1 class="mt-3 font-display text-6xl leading-[0.9] sm:text-7xl">
+          Ship with receipts.
+        </h1>
+        <p class="mt-5 max-w-xl text-xl leading-snug">
+          ClankerKit gives coding agents one job at a time: a trigger, a procedure, and a handoff
+          another person can audit. {catalog.skill_count} skills, checked in CI.
+        </p>
+      </div>
+      <div class="border border-ink bg-plate p-5 text-card shadow-[8px_8px_0_#101820]">
+        <p class="font-mono text-xs uppercase tracking-widest text-mark">Install in one command</p>
+        <pre class="mt-3 overflow-x-auto font-mono text-sm">{sample}</pre>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button type="button" data-copy={sample} class="bg-mark px-3 py-1 text-sm font-bold text-plate">Copy</button>
+          <a class="border border-card px-3 py-1 text-sm" href="/skills/runtime-proof">Open runtime-proof</a>
+        </div>
+        <p class="mt-4 font-mono text-xs text-line">
+          Claude Code: /plugin marketplace add {repo}
+        </p>
+      </div>
+    </section>
+
+    <section class="border-y border-line bg-card">
+      <dl class="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-5 py-6 sm:grid-cols-4">
+        <div>
+          <dt class="font-mono text-xs uppercase tracking-wide">Skills</dt>
+          <dd class="font-display text-4xl">{catalog.skill_count}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs uppercase tracking-wide">Categories</dt>
+          <dd class="font-display text-4xl">{categories.length}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs uppercase tracking-wide">Bundles</dt>
+          <dd class="font-display text-4xl">{catalog.bundles.length}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-xs uppercase tracking-wide">Spec</dt>
+          <dd class="font-display text-4xl">v2</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="mx-auto grid max-w-6xl gap-12 px-5 py-12 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-4xl">Bundles</h2>
+        <ul class="mt-4 divide-y divide-line border-y border-line">
+          {
+            featured.map((bundle) => (
+              <li class="grid gap-1 py-4 sm:grid-cols-[12rem_1fr] sm:gap-4">
+                <a class="font-display text-2xl text-link" href={`/bundles/${bundle.name}`}>
+                  {bundle.title}
+                </a>
+                <p>{bundle.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-display text-4xl">Categories</h2>
+        <ul class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+          {
+            categories.map(([category, count]) => (
+              <li>
+                <a
+                  class="flex items-baseline justify-between border border-line bg-card px-3 py-3 hover:border-ink"
+                  href={`/skills?category=${category}`}
+                >
+                  <span class="font-semibold">{category}</span>
+                  <span class="font-mono text-sm">{count}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+</Base>

@@ -1,0 +1,16 @@
+{
+  "name": "pr-safety",
+  "title": "PR safety",
+  "description": "Review a pull request with risk framing, an evidence gate, runtime proof, and ranked findings.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "safe-pr-prep",
+    "gate-and-done",
+    "runtime-proof",
+    "truthforge",
+    "code-review",
+    "test-surface-skeptic",
+    "blast-radius-scan"
+  ]
+}

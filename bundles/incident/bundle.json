@@ -1,0 +1,15 @@
+{
+  "name": "incident",
+  "title": "Incident",
+  "description": "Trace a failure, separate synthetic green from runtime truth, and leave a blameless handoff.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "trace-the-failure",
+    "truthforge",
+    "escalation-and-blockers",
+    "production-readiness-pass",
+    "incident-postmortem",
+    "observability-add"
+  ]
+}

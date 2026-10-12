@@ -1,0 +1,1660 @@
+{
+  "schema_version": 2,
+  "skill_count": 44,
+  "repository": "SlipstreamAI/ClankerKit",
+  "skills": [
+    {
+      "name": "ci-failure-triage",
+      "description": "Reads a failing CI log, separates infrastructure failures from product failures, and proposes the smallest fix. Use when a pull request or main branch check is red and the log is the evidence you have.",
+      "use_when": "a pull request or main branch check is red and the log is the evidence you have",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "debugging",
+        "status": "experimental",
+        "tags": "ci, triage, logs",
+        "modes": "ci, bugfix",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "debugging",
+      "status": "experimental",
+      "tags": [
+        "ci",
+        "triage",
+        "logs"
+      ],
+      "modes": [
+        "ci",
+        "bugfix"
+      ],
+      "path": "skills/ci-failure-triage/SKILL.md",
+      "files": [
+        "scripts/__pycache__/extract_failure.cpython-312.pyc",
+        "scripts/extract_failure.py"
+      ]
+    },
+    {
+      "name": "fix-flaky-test",
+      "description": "Reproduces a flaky test, classifies the cause, and proves a de-flake with repeated runs. Use when a test fails intermittently and quarantine or a rerun is being treated as the fix.",
+      "use_when": "a test fails intermittently and quarantine or a rerun is being treated as the fix",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "debugging",
+        "status": "experimental",
+        "tags": "tests, flake, debugging",
+        "modes": "ci, bugfix",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "debugging",
+      "status": "experimental",
+      "tags": [
+        "tests",
+        "flake",
+        "debugging"
+      ],
+      "modes": [
+        "ci",
+        "bugfix"
+      ],
+      "path": "skills/fix-flaky-test/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "trace-the-failure",
+      "description": "Reproduces a failure and traces it boundary by boundary until the cause is evidenced. Use when a bug, red test, or incident needs a deterministic repro before any fix.",
+      "use_when": "a bug, red test, or incident needs a deterministic repro before any fix",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "debugging",
+        "status": "provisional",
+        "tags": "debugging, repro, tracing",
+        "modes": "incident, bugfix",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "debugging",
+      "status": "provisional",
+      "tags": [
+        "debugging",
+        "repro",
+        "tracing"
+      ],
+      "modes": [
+        "incident",
+        "bugfix"
+      ],
+      "path": "skills/trace-the-failure/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "dependency-upgrade",
+      "description": "Plans and verifies a dependency bump, including majors, using the changelog and the project's tests. Use when upgrading a direct dependency, especially across a major version, and you need a rollback path.",
+      "use_when": "upgrading a direct dependency, especially across a major version, and you need a rollback path",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "experimental",
+        "tags": "dependencies, upgrade, maintenance",
+        "modes": "maintenance, pre-merge",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "experimental",
+      "tags": [
+        "dependencies",
+        "upgrade",
+        "maintenance"
+      ],
+      "modes": [
+        "maintenance",
+        "pre-merge"
+      ],
+      "path": "skills/dependency-upgrade/SKILL.md",
+      "files": [
+        "references/bump-checklist.md"
+      ]
+    },
+    {
+      "name": "deterministic-execution-lane",
+      "description": "Runs a resumable, fail-closed implementation lane with explicit checkpoints. Use when a multi-step change must continue until done or blocked, without silent skips.",
+      "use_when": "a multi-step change must continue until done or blocked, without silent skips",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "provisional",
+        "tags": "delivery, checkpoints, execution",
+        "modes": "implementation, resume",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "provisional",
+      "tags": [
+        "delivery",
+        "checkpoints",
+        "execution"
+      ],
+      "modes": [
+        "implementation",
+        "resume"
+      ],
+      "path": "skills/deterministic-execution-lane/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "dockerize-and-deploy",
+      "description": "Prepares a container build and deploy checklist with a smoke-test receipt. Use when adding a Dockerfile or shipping an image and you need build, run, and rollback evidence.",
+      "use_when": "adding a Dockerfile or shipping an image and you need build, run, and rollback evidence",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "experimental",
+        "tags": "docker, deploy, smoke-test",
+        "modes": "release, delivery",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "experimental",
+      "tags": [
+        "docker",
+        "deploy",
+        "smoke-test"
+      ],
+      "modes": [
+        "release",
+        "delivery"
+      ],
+      "path": "skills/dockerize-and-deploy/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "mcp-server-builder",
+      "description": "Builds or changes an MCP server and proves a tool call against a local transport. Use when adding an MCP tool, resource, or prompt and you need a schema plus a real invocation receipt.",
+      "use_when": "adding an MCP tool, resource, or prompt and you need a schema plus a real invocation receipt",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "experimental",
+        "tags": "mcp, tools, agents",
+        "modes": "feature, integration",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "experimental",
+      "tags": [
+        "mcp",
+        "tools",
+        "agents"
+      ],
+      "modes": [
+        "feature",
+        "integration"
+      ],
+      "path": "skills/mcp-server-builder/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "merge-train-governor",
+      "description": "Governs a single-lane merge queue with triage, readiness gates, and review hygiene. Use when several changes are competing to merge and promotion order must be explicit.",
+      "use_when": "several changes are competing to merge and promotion order must be explicit",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "provisional",
+        "tags": "delivery, merge, queue",
+        "modes": "pre-merge, release",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "provisional",
+      "tags": [
+        "delivery",
+        "merge",
+        "queue"
+      ],
+      "modes": [
+        "pre-merge",
+        "release"
+      ],
+      "path": "skills/merge-train-governor/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "refactor-safely",
+      "description": "Refactors code while pinning current behavior with characterization tests. Use when renaming, splitting, or moving code and the behavior must stay the same.",
+      "use_when": "renaming, splitting, or moving code and the behavior must stay the same",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "experimental",
+        "tags": "refactor, characterization, safety",
+        "modes": "refactor, pre-merge",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "experimental",
+      "tags": [
+        "refactor",
+        "characterization",
+        "safety"
+      ],
+      "modes": [
+        "refactor",
+        "pre-merge"
+      ],
+      "path": "skills/refactor-safely/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "safe-pr-prep",
+      "description": "Prepares a pull request with risk framing, proof receipts, and a reviewer-ready summary. Use when opening or updating a PR and the diff needs a claim-to-evidence handoff.",
+      "use_when": "opening or updating a PR and the diff needs a claim-to-evidence handoff",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "provisional",
+        "tags": "delivery, pull-request, review",
+        "modes": "pre-merge, pr-open",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "provisional",
+      "tags": [
+        "delivery",
+        "pull-request",
+        "review"
+      ],
+      "modes": [
+        "pre-merge",
+        "pr-open"
+      ],
+      "path": "skills/safe-pr-prep/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "tdd-loop",
+      "description": "Runs a red-green-refactor loop and records the command receipt for each step. Use when implementing a behavior and you want the test to fail for the right reason before production code changes.",
+      "use_when": "implementing a behavior and you want the test to fail for the right reason before production code changes",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "delivery",
+        "status": "experimental",
+        "tags": "testing, tdd, implementation",
+        "modes": "feature, bugfix",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "delivery",
+      "status": "experimental",
+      "tags": [
+        "testing",
+        "tdd",
+        "implementation"
+      ],
+      "modes": [
+        "feature",
+        "bugfix"
+      ],
+      "path": "skills/tdd-loop/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "docs-from-code",
+      "description": "Updates README or API docs so the commands and interfaces match the code. Use when docs drift from flags, routes, or setup steps, or when a change needs docs that were verified by running them.",
+      "use_when": "docs drift from flags, routes, or setup steps, or when a change needs docs that were verified by running them",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "documentation",
+        "status": "experimental",
+        "tags": "docs, readme, accuracy",
+        "modes": "pr-audit, documentation",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "documentation",
+      "status": "experimental",
+      "tags": [
+        "docs",
+        "readme",
+        "accuracy"
+      ],
+      "modes": [
+        "pr-audit",
+        "documentation"
+      ],
+      "path": "skills/docs-from-code/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "incident-postmortem",
+      "description": "Writes a blameless incident postmortem with a timeline, impact, and owned action items. Use when an incident is over or stable and the team needs a record that separates evidence from guesswork.",
+      "use_when": "an incident is over or stable and the team needs a record that separates evidence from guesswork",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "documentation",
+        "status": "experimental",
+        "tags": "incident, postmortem, timeline",
+        "modes": "incident, handoff",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "documentation",
+      "status": "experimental",
+      "tags": [
+        "incident",
+        "postmortem",
+        "timeline"
+      ],
+      "modes": [
+        "incident",
+        "handoff"
+      ],
+      "path": "skills/incident-postmortem/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "operator-handoff",
+      "description": "Writes a handoff another human or agent can continue without hidden chat context. Use when work is pausing, swapping owners, or leaving a session that held the only copy of the plan.",
+      "use_when": "work is pausing, swapping owners, or leaving a session that held the only copy of the plan",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "documentation",
+        "status": "provisional",
+        "tags": "handoff, documentation, continuity",
+        "modes": "handoff, pause",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "documentation",
+      "status": "provisional",
+      "tags": [
+        "handoff",
+        "documentation",
+        "continuity"
+      ],
+      "modes": [
+        "handoff",
+        "pause"
+      ],
+      "path": "skills/operator-handoff/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "release-notes-and-changelog",
+      "description": "Drafts release notes and a changelog from merged commits or pull requests, and makes a semver call with reasons. Use when cutting a release or updating a changelog and the notes must match the history.",
+      "use_when": "cutting a release or updating a changelog and the notes must match the history",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "documentation",
+        "status": "experimental",
+        "tags": "release, changelog, semver",
+        "modes": "release",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "documentation",
+      "status": "experimental",
+      "tags": [
+        "release",
+        "changelog",
+        "semver"
+      ],
+      "modes": [
+        "release"
+      ],
+      "path": "skills/release-notes-and-changelog/SKILL.md",
+      "files": [
+        "scripts/__pycache__/commits_since.cpython-312.pyc",
+        "scripts/commits_since.py"
+      ]
+    },
+    {
+      "name": "skill-creator",
+      "description": "Authors a new ClankerKit skill that follows the Agent Skills spec and the local evidence contract. Use when creating or reshaping a SKILL.md, including its frontmatter trigger, metadata, and handoff.",
+      "use_when": "creating or reshaping a SKILL.md, including its frontmatter trigger, metadata, and handoff",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "documentation",
+        "status": "experimental",
+        "tags": "skills, authoring, spec",
+        "modes": "contribution, meta",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "documentation",
+      "status": "experimental",
+      "tags": [
+        "skills",
+        "authoring",
+        "spec"
+      ],
+      "modes": [
+        "contribution",
+        "meta"
+      ],
+      "path": "skills/skill-creator/SKILL.md",
+      "files": [
+        "assets/SKILL.template.md",
+        "references/frontmatter.md"
+      ]
+    },
+    {
+      "name": "code-review",
+      "description": "Reviews a diff and returns severity-ranked findings tied to files and behavior. Use when a human or agent asks for a code review before merge and wants defects, risks, and missing tests rather than a style rewrite.",
+      "use_when": "a human or agent asks for a code review before merge and wants defects, risks, and missing tests rather than a style rewrite",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "experimental",
+        "tags": "review, pull-request, quality",
+        "modes": "pr-audit, pre-merge",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "experimental",
+      "tags": [
+        "review",
+        "pull-request",
+        "quality"
+      ],
+      "modes": [
+        "pr-audit",
+        "pre-merge"
+      ],
+      "path": "skills/code-review/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "escalation-and-blockers",
+      "description": "Sets explicit escalation triggers, blocker definitions, and pause boundaries. Use when an agent must decide whether to continue, stop, or hand the work to a human.",
+      "use_when": "an agent must decide whether to continue, stop, or hand the work to a human",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, escalation, stop",
+        "modes": "incident, pr-audit, execution",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "escalation",
+        "stop"
+      ],
+      "modes": [
+        "incident",
+        "pr-audit",
+        "execution"
+      ],
+      "path": "skills/escalation-and-blockers/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "gate-and-done",
+      "description": "Defines the evidence contract, evaluates explicit merge or release gates, and checks definition-of-done across code, proof, docs, and handoff. Use when a change is called ready and reviewers need one pass or fail contract instead of separate evidence, gate, and done checks.",
+      "use_when": "a change is called ready and reviewers need one pass or fail contract instead of separate evidence, gate, and done checks",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, gates, evidence, done",
+        "modes": "evidence-contract, pre-merge, release-readiness",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "gates",
+        "evidence",
+        "done"
+      ],
+      "modes": [
+        "evidence-contract",
+        "pre-merge",
+        "release-readiness"
+      ],
+      "path": "skills/gate-and-done/SKILL.md",
+      "files": [
+        "assets/gate-report.md",
+        "references/evidence-classes.md"
+      ]
+    },
+    {
+      "name": "orchestrator-hardening",
+      "description": "Bootstraps a deterministic orchestration contract for lane routing, escalation, and stop boundaries. Use when an agent session needs capability routing, continuation rules, or a missing control loop in AGENTS.md.",
+      "use_when": "an agent session needs capability routing, continuation rules, or a missing control loop in AGENTS.md",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, routing, orchestration",
+        "modes": "governance-reset, session-bootstrap",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "routing",
+        "orchestration"
+      ],
+      "modes": [
+        "governance-reset",
+        "session-bootstrap"
+      ],
+      "path": "skills/orchestrator-hardening/SKILL.md",
+      "files": [
+        "assets/routing-handoff.md",
+        "references/lane-contract.md"
+      ]
+    },
+    {
+      "name": "skill-intake-gate",
+      "description": "Screens a contributed skill for safety, determinism, and Agent Skills spec shape before acceptance. Use when reviewing a new or changed SKILL.md, helper script, or skill proposed for this catalog.",
+      "use_when": "reviewing a new or changed SKILL.md, helper script, or skill proposed for this catalog",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, skills, safety",
+        "modes": "contribution-review",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "skills",
+        "safety"
+      ],
+      "modes": [
+        "contribution-review"
+      ],
+      "path": "skills/skill-intake-gate/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "skill-security-scan",
+      "description": "Reviews a third-party skill directory for unsafe instructions and suspicious scripts before install. Use when adding a skill from outside this catalog, or when skill-intake-gate needs a file-level safety pass.",
+      "use_when": "adding a skill from outside this catalog, or when skill-intake-gate needs a file-level safety pass",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "experimental",
+        "tags": "skills, supply-chain, safety",
+        "modes": "contribution-review, install",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "experimental",
+      "tags": [
+        "skills",
+        "supply-chain",
+        "safety"
+      ],
+      "modes": [
+        "contribution-review",
+        "install"
+      ],
+      "path": "skills/skill-security-scan/SKILL.md",
+      "files": [
+        "scripts/__pycache__/scan_skill.cpython-312.pyc",
+        "scripts/scan_skill.py"
+      ]
+    },
+    {
+      "name": "truth-recovery-program",
+      "description": "Runs one parent audit of merged truth, intent drift, and queue quality. Use when history, open work, or prior merges can no longer be trusted at face value.",
+      "use_when": "history, open work, or prior merges can no longer be trusted at face value",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, audit, history",
+        "modes": "repo-truth-recovery, audit",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "audit",
+        "history"
+      ],
+      "modes": [
+        "repo-truth-recovery",
+        "audit"
+      ],
+      "path": "skills/truth-recovery-program/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "truthforge",
+      "description": "Detects false-confidence tests, synthetic evidence, and completion claims that lack runtime-relevant proof. Use when a PR, incident, or agent says a runtime-visible change works or is done and the evidence may be mocked, shallow, or incomplete.",
+      "use_when": "a PR, incident, or agent says a runtime-visible change works or is done and the evidence may be mocked, shallow, or incomplete",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "governance",
+        "status": "provisional",
+        "tags": "governance, proof, false-confidence",
+        "modes": "pr-audit, incident, repo-truth-recovery, completion-claim",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "governance",
+      "status": "provisional",
+      "tags": [
+        "governance",
+        "proof",
+        "false-confidence"
+      ],
+      "modes": [
+        "pr-audit",
+        "incident",
+        "repo-truth-recovery",
+        "completion-claim"
+      ],
+      "path": "skills/truthforge/SKILL.md",
+      "files": [
+        "references/completion-claim-audit.md",
+        "scripts/collect_evidence.sh"
+      ]
+    },
+    {
+      "name": "db-migration-safety",
+      "description": "Reviews a database migration for lock risk, expand-contract safety, and a reversible or forward-fix plan. Use when a pull request adds SQL or a migration framework change that alters tables, indexes, or backfills.",
+      "use_when": "a pull request adds SQL or a migration framework change that alters tables, indexes, or backfills",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "experimental",
+        "tags": "database, migrations, safety",
+        "modes": "pre-merge, release",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "experimental",
+      "tags": [
+        "database",
+        "migrations",
+        "safety"
+      ],
+      "modes": [
+        "pre-merge",
+        "release"
+      ],
+      "path": "skills/db-migration-safety/SKILL.md",
+      "files": [
+        "references/lock-and-backfill.md"
+      ]
+    },
+    {
+      "name": "observability-add",
+      "description": "Adds logs, metrics, or traces that answer a specific production question, without leaking secrets. Use when a feature is shipping and operators could not tell whether it worked or failed.",
+      "use_when": "a feature is shipping and operators could not tell whether it worked or failed",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "experimental",
+        "tags": "observability, logs, metrics, traces",
+        "modes": "feature, release-readiness",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "experimental",
+      "tags": [
+        "observability",
+        "logs",
+        "metrics",
+        "traces"
+      ],
+      "modes": [
+        "feature",
+        "release-readiness"
+      ],
+      "path": "skills/observability-add/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "production-readiness-pass",
+      "description": "Audits resilience, observability, rollback, and runtime assumptions before release. Use when a change is headed to production and operational failure modes are still unproven.",
+      "use_when": "a change is headed to production and operational failure modes are still unproven",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "provisional",
+        "tags": "hardening, release, operations",
+        "modes": "release-readiness",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "provisional",
+      "tags": [
+        "hardening",
+        "release",
+        "operations"
+      ],
+      "modes": [
+        "release-readiness"
+      ],
+      "path": "skills/production-readiness-pass/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "prompt-injection-hardening",
+      "description": "Hardens features that pass untrusted text into an LLM by separating instructions from data and testing a benign injection fixture. Use when building or reviewing retrieval, email, ticket, or web content that a model will read.",
+      "use_when": "building or reviewing retrieval, email, ticket, or web content that a model will read",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "experimental",
+        "tags": "llm, prompt-injection, security",
+        "modes": "feature, pr-audit",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "experimental",
+      "tags": [
+        "llm",
+        "prompt-injection",
+        "security"
+      ],
+      "modes": [
+        "feature",
+        "pr-audit"
+      ],
+      "path": "skills/prompt-injection-hardening/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "secrets-and-config-audit",
+      "description": "Audits environment variables, config files, and committed secrets against 12-factor hygiene. Use when reviewing how an app is configured, before deploy, or after a secret may have landed in a file.",
+      "use_when": "reviewing how an app is configured, before deploy, or after a secret may have landed in a file",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "experimental",
+        "tags": "secrets, config, env, 12-factor",
+        "modes": "pre-merge, release-readiness",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "experimental",
+      "tags": [
+        "secrets",
+        "config",
+        "env",
+        "12-factor"
+      ],
+      "modes": [
+        "pre-merge",
+        "release-readiness"
+      ],
+      "path": "skills/secrets-and-config-audit/SKILL.md",
+      "files": [
+        "scripts/__pycache__/scan_config.cpython-312.pyc",
+        "scripts/scan_config.py"
+      ]
+    },
+    {
+      "name": "security-review",
+      "description": "Reviews a diff for secrets, injection sinks, and missing authorization on new entrypoints. Use when a change touches auth, user input, queries, shell, files, deserialization, or dependencies and needs severity-ranked findings.",
+      "use_when": "a change touches auth, user input, queries, shell, files, deserialization, or dependencies and needs severity-ranked findings",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "hardening",
+        "status": "experimental",
+        "tags": "security, review, owasp",
+        "modes": "pr-audit, pre-merge",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "hardening",
+      "status": "experimental",
+      "tags": [
+        "security",
+        "review",
+        "owasp"
+      ],
+      "modes": [
+        "pr-audit",
+        "pre-merge"
+      ],
+      "path": "skills/security-review/SKILL.md",
+      "files": [
+        "references/review-checklist.md",
+        "scripts/__pycache__/scan_diff.cpython-312.pyc",
+        "scripts/scan_diff.py"
+      ]
+    },
+    {
+      "name": "blast-radius-scan",
+      "description": "Estimates change impact across code, runtime boundaries, and operational workflows. Use when a diff looks small but shared types, config, or data paths may spread the effect.",
+      "use_when": "a diff looks small but shared types, config, or data paths may spread the effect",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "repo-understanding",
+        "status": "provisional",
+        "tags": "impact, risk, diff",
+        "modes": "pre-edit, pr-audit",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "repo-understanding",
+      "status": "provisional",
+      "tags": [
+        "impact",
+        "risk",
+        "diff"
+      ],
+      "modes": [
+        "pre-edit",
+        "pr-audit"
+      ],
+      "path": "skills/blast-radius-scan/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "find-the-real-entrypoints",
+      "description": "Separates true runtime entrypoints from scaffolds, demos, and tests. Use when you need the path a real user, job, or caller hits before changing behavior.",
+      "use_when": "you need the path a real user, job, or caller hits before changing behavior",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "repo-understanding",
+        "status": "provisional",
+        "tags": "entrypoints, runtime, repo-map",
+        "modes": "onboarding, pre-edit",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "repo-understanding",
+      "status": "provisional",
+      "tags": [
+        "entrypoints",
+        "runtime",
+        "repo-map"
+      ],
+      "modes": [
+        "onboarding",
+        "pre-edit"
+      ],
+      "path": "skills/find-the-real-entrypoints/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "legacy-code-archaeology",
+      "description": "Recovers the intent of legacy code from git history, callers, and tests. Use when you must change old code and the reason it exists is not in the current comments.",
+      "use_when": "you must change old code and the reason it exists is not in the current comments",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "repo-understanding",
+        "status": "experimental",
+        "tags": "legacy, git-history, intent",
+        "modes": "pre-edit, refactor",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "repo-understanding",
+      "status": "experimental",
+      "tags": [
+        "legacy",
+        "git-history",
+        "intent"
+      ],
+      "modes": [
+        "pre-edit",
+        "refactor"
+      ],
+      "path": "skills/legacy-code-archaeology/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "map-the-system",
+      "description": "Maps entrypoints, boundaries, dependencies, and blast radius before broad edits. Use when the repo is unfamiliar or a change could cross service, package, or runtime boundaries.",
+      "use_when": "the repo is unfamiliar or a change could cross service, package, or runtime boundaries",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "repo-understanding",
+        "status": "provisional",
+        "tags": "repo-map, boundaries, onboarding",
+        "modes": "onboarding, pre-edit",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "repo-understanding",
+      "status": "provisional",
+      "tags": [
+        "repo-map",
+        "boundaries",
+        "onboarding"
+      ],
+      "modes": [
+        "onboarding",
+        "pre-edit"
+      ],
+      "path": "skills/map-the-system/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "onboard-to-repo",
+      "description": "Produces a first-hour orientation of a repository: how it starts, how it is tested, and which entrypoints are real. Use when an agent or human is new to a repo and needs a map before editing.",
+      "use_when": "an agent or human is new to a repo and needs a map before editing",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "repo-understanding",
+        "status": "experimental",
+        "tags": "onboarding, repo-map, entrypoints",
+        "modes": "onboarding, pre-edit",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "repo-understanding",
+      "status": "experimental",
+      "tags": [
+        "onboarding",
+        "repo-map",
+        "entrypoints"
+      ],
+      "modes": [
+        "onboarding",
+        "pre-edit"
+      ],
+      "path": "skills/onboard-to-repo/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "accessibility-audit",
+      "description": "Audits a UI change against keyboard, name, contrast, and error-state checks with evidence. Use when a screen changes and someone needs a WCAG-oriented pass that says what was actually exercised.",
+      "use_when": "a screen changes and someone needs a WCAG-oriented pass that says what was actually exercised",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "accessibility, wcag, ui",
+        "modes": "pr-audit, ui",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "accessibility",
+        "wcag",
+        "ui"
+      ],
+      "modes": [
+        "pr-audit",
+        "ui"
+      ],
+      "path": "skills/accessibility-audit/SKILL.md",
+      "files": [
+        "references/wcag-checks.md"
+      ]
+    },
+    {
+      "name": "agent-eval-harness",
+      "description": "Sets up an evaluation harness for an agent or LLM feature with explicit cases and graders. Use when an agent prompt, tool, or model change needs a repeatable pass rate instead of a single impressive example.",
+      "use_when": "an agent prompt, tool, or model change needs a repeatable pass rate instead of a single impressive example",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "evals, agents, llm",
+        "modes": "feature, regression",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "evals",
+        "agents",
+        "llm"
+      ],
+      "modes": [
+        "feature",
+        "regression"
+      ],
+      "path": "skills/agent-eval-harness/SKILL.md",
+      "files": [
+        "assets/case-template.json"
+      ]
+    },
+    {
+      "name": "api-contract-check",
+      "description": "Compares an API or schema change with its consumers and flags breaking changes. Use when a pull request changes request or response shapes, status codes, OpenAPI, protobuf, or shared types.",
+      "use_when": "a pull request changes request or response shapes, status codes, OpenAPI, protobuf, or shared types",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "api, schema, compatibility",
+        "modes": "pr-audit, release",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "api",
+        "schema",
+        "compatibility"
+      ],
+      "modes": [
+        "pr-audit",
+        "release"
+      ],
+      "path": "skills/api-contract-check/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "evidence-research-flywheel",
+      "description": "Turns research into confidence-scored claims while keeping sources attached. Use when gathering repo or external evidence and handing off a bounded plan without dropping provenance.",
+      "use_when": "gathering repo or external evidence and handing off a bounded plan without dropping provenance",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "provisional",
+        "tags": "validation, research, provenance",
+        "modes": "research, planning",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "provisional",
+      "tags": [
+        "validation",
+        "research",
+        "provenance"
+      ],
+      "modes": [
+        "research",
+        "planning"
+      ],
+      "path": "skills/evidence-research-flywheel/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "frontend-ui-verify",
+      "description": "Verifies a user-visible UI change by exercising the flow and recording screenshot or trace evidence. Use when a pull request claims a screen, component, or interaction changed and unit tests are the only proof.",
+      "use_when": "a pull request claims a screen, component, or interaction changed and unit tests are the only proof",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "frontend, ui, screenshot, playwright",
+        "modes": "pr-audit, ui",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "frontend",
+        "ui",
+        "screenshot",
+        "playwright"
+      ],
+      "modes": [
+        "pr-audit",
+        "ui"
+      ],
+      "path": "skills/frontend-ui-verify/SKILL.md",
+      "files": [
+        "assets/proof-note.md"
+      ]
+    },
+    {
+      "name": "performance-profile",
+      "description": "Measures a performance claim before and after a change, using the same workload. Use when someone wants a speed or cost improvement and the only evidence so far is a feeling or a single anecdote.",
+      "use_when": "someone wants a speed or cost improvement and the only evidence so far is a feeling or a single anecdote",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "performance, benchmark, measurement",
+        "modes": "optimization, pr-audit",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "performance",
+        "benchmark",
+        "measurement"
+      ],
+      "modes": [
+        "optimization",
+        "pr-audit"
+      ],
+      "path": "skills/performance-profile/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "runtime-proof",
+      "description": "Tests whether a runtime-visible claim is proven by runtime-relevant evidence instead of a synthetic harness. Use when a fix, feature, or deploy claim depends on real execution and a green suite is the only receipt offered.",
+      "use_when": "a fix, feature, or deploy claim depends on real execution and a green suite is the only receipt offered",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "provisional",
+        "tags": "validation, runtime, proof",
+        "modes": "pr-audit, incident, pre-merge",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "provisional",
+      "tags": [
+        "validation",
+        "runtime",
+        "proof"
+      ],
+      "modes": [
+        "pr-audit",
+        "incident",
+        "pre-merge"
+      ],
+      "path": "skills/runtime-proof/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "test-surface-skeptic",
+      "description": "Judges whether tests prove behavior on real risk surfaces or only the shape of a harness. Use when coverage looks broad but the assertions may be mocks, snapshots, or tautologies.",
+      "use_when": "coverage looks broad but the assertions may be mocks, snapshots, or tautologies",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "provisional",
+        "tags": "validation, tests, coverage",
+        "modes": "pr-audit, test-review",
+        "version": "1.0.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "provisional",
+      "tags": [
+        "validation",
+        "tests",
+        "coverage"
+      ],
+      "modes": [
+        "pr-audit",
+        "test-review"
+      ],
+      "path": "skills/test-surface-skeptic/SKILL.md",
+      "files": []
+    },
+    {
+      "name": "write-real-tests",
+      "description": "Adds behavior tests that fail for a real reason before the fix and pass after it. Use when a change needs coverage that proves behavior, especially when existing tests only assert mocks, snapshots, or implementation details.",
+      "use_when": "a change needs coverage that proves behavior, especially when existing tests only assert mocks, snapshots, or implementation details",
+      "license": "Apache-2.0",
+      "compatibility": "Claude Code, Cursor, Codex, Grok Build, and GitHub Copilot. Needs git and a search tool such as rg.",
+      "allowed_tools": [
+        "Bash",
+        "Read",
+        "Grep"
+      ],
+      "metadata": {
+        "category": "validation",
+        "status": "experimental",
+        "tags": "testing, behavior, coverage",
+        "modes": "bugfix, feature, pr-audit",
+        "version": "0.1.0",
+        "author": "SlipstreamAI"
+      },
+      "category": "validation",
+      "status": "experimental",
+      "tags": [
+        "testing",
+        "behavior",
+        "coverage"
+      ],
+      "modes": [
+        "bugfix",
+        "feature",
+        "pr-audit"
+      ],
+      "path": "skills/write-real-tests/SKILL.md",
+      "files": [
+        "scripts/__pycache__/list_changed_surfaces.cpython-312.pyc",
+        "scripts/list_changed_surfaces.py"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "name": "full-catalog",
+      "title": "Full catalog",
+      "description": "Every ClankerKit skill. Prefer a smaller bundle unless you want the whole catalog installed.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "accessibility-audit",
+        "agent-eval-harness",
+        "api-contract-check",
+        "blast-radius-scan",
+        "ci-failure-triage",
+        "code-review",
+        "db-migration-safety",
+        "dependency-upgrade",
+        "deterministic-execution-lane",
+        "dockerize-and-deploy",
+        "docs-from-code",
+        "escalation-and-blockers",
+        "evidence-research-flywheel",
+        "find-the-real-entrypoints",
+        "fix-flaky-test",
+        "frontend-ui-verify",
+        "gate-and-done",
+        "incident-postmortem",
+        "legacy-code-archaeology",
+        "map-the-system",
+        "mcp-server-builder",
+        "merge-train-governor",
+        "observability-add",
+        "onboard-to-repo",
+        "operator-handoff",
+        "orchestrator-hardening",
+        "performance-profile",
+        "production-readiness-pass",
+        "prompt-injection-hardening",
+        "refactor-safely",
+        "release-notes-and-changelog",
+        "runtime-proof",
+        "safe-pr-prep",
+        "secrets-and-config-audit",
+        "security-review",
+        "skill-creator",
+        "skill-intake-gate",
+        "skill-security-scan",
+        "tdd-loop",
+        "test-surface-skeptic",
+        "trace-the-failure",
+        "truth-recovery-program",
+        "truthforge",
+        "write-real-tests"
+      ],
+      "path": "bundles/full-catalog/bundle.json"
+    },
+    {
+      "name": "incident",
+      "title": "Incident",
+      "description": "Trace a failure, separate synthetic green from runtime truth, and leave a blameless handoff.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "trace-the-failure",
+        "truthforge",
+        "escalation-and-blockers",
+        "production-readiness-pass",
+        "incident-postmortem",
+        "observability-add"
+      ],
+      "path": "bundles/incident/bundle.json"
+    },
+    {
+      "name": "new-repo-onboarding",
+      "title": "New repo onboarding",
+      "description": "Spend the first hour mapping how a repository actually runs before editing it.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "onboard-to-repo",
+        "map-the-system",
+        "find-the-real-entrypoints",
+        "blast-radius-scan",
+        "legacy-code-archaeology"
+      ],
+      "path": "bundles/new-repo-onboarding/bundle.json"
+    },
+    {
+      "name": "pr-safety",
+      "title": "PR safety",
+      "description": "Review a pull request with risk framing, an evidence gate, runtime proof, and ranked findings.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "safe-pr-prep",
+        "gate-and-done",
+        "runtime-proof",
+        "truthforge",
+        "code-review",
+        "test-surface-skeptic",
+        "blast-radius-scan"
+      ],
+      "path": "bundles/pr-safety/bundle.json"
+    },
+    {
+      "name": "security",
+      "title": "Security",
+      "description": "Review diffs, config, untrusted model input, and third-party skills before they ship.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "security-review",
+        "secrets-and-config-audit",
+        "prompt-injection-hardening",
+        "skill-security-scan",
+        "skill-intake-gate"
+      ],
+      "path": "bundles/security/bundle.json"
+    },
+    {
+      "name": "ship",
+      "title": "Ship",
+      "description": "Upgrade, migrate, containerize, and explain a release with receipts instead of a vibe.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "dependency-upgrade",
+        "refactor-safely",
+        "ci-failure-triage",
+        "dockerize-and-deploy",
+        "release-notes-and-changelog",
+        "db-migration-safety",
+        "api-contract-check",
+        "docs-from-code"
+      ],
+      "path": "bundles/ship/bundle.json"
+    },
+    {
+      "name": "testing",
+      "title": "Testing",
+      "description": "Add behavior tests, run a red-green loop, and challenge coverage that does not prove the claim.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "skills": [
+        "write-real-tests",
+        "tdd-loop",
+        "fix-flaky-test",
+        "test-surface-skeptic",
+        "runtime-proof",
+        "frontend-ui-verify"
+      ],
+      "path": "bundles/testing/bundle.json"
+    }
+  ]
+}

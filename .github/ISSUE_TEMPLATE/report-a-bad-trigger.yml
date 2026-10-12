@@ -1,0 +1,34 @@
+name: Report a bad trigger
+description: A skill fired when it should not have, or failed to fire when it should have.
+title: "Bad trigger: "
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill name
+      placeholder: runtime-proof
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong?
+      options:
+        - Fired on the wrong task
+        - Did not fire on a matching task
+        - Overlapped another skill
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: The prompt or task
+      description: Paste the request that should or should not have matched. Omit secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should have happened?
+    validations:
+      required: true

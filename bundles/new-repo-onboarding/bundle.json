@@ -1,0 +1,14 @@
+{
+  "name": "new-repo-onboarding",
+  "title": "New repo onboarding",
+  "description": "Spend the first hour mapping how a repository actually runs before editing it.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "onboard-to-repo",
+    "map-the-system",
+    "find-the-real-entrypoints",
+    "blast-radius-scan",
+    "legacy-code-archaeology"
+  ]
+}

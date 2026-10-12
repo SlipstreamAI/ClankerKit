@@ -1,0 +1,15 @@
+{
+  "name": "testing",
+  "title": "Testing",
+  "description": "Add behavior tests, run a red-green loop, and challenge coverage that does not prove the claim.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "write-real-tests",
+    "tdd-loop",
+    "fix-flaky-test",
+    "test-surface-skeptic",
+    "runtime-proof",
+    "frontend-ui-verify"
+  ]
+}

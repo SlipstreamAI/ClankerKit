@@ -116,4 +116,4 @@ It does not claim token-level routing inside model inference.
 
 ## Companion check
 
-Run [`orchestrator-routing-check.md`](/C:/DEV2/ClankerKit/checks/orchestrator-routing-check.md) after bootstrap or patch application.
+Run [`orchestrator-routing-check.md`](../checks/orchestrator-routing-check.md) after bootstrap or patch application.

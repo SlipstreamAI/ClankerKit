@@ -1,0 +1,132 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "clankerkit",
+  "description": "ClankerKit skills for agents that build, test, secure, and prove real software.",
+  "owner": {
+    "name": "SlipstreamAI"
+  },
+  "plugins": [
+    {
+      "name": "full-catalog",
+      "source": "./",
+      "description": "Every ClankerKit skill. Prefer a smaller bundle unless you want the whole catalog installed.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "incident",
+      "source": "./",
+      "description": "Trace a failure, separate synthetic green from runtime truth, and leave a blameless handoff.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/trace-the-failure",
+        "./skills/truthforge",
+        "./skills/escalation-and-blockers",
+        "./skills/production-readiness-pass",
+        "./skills/incident-postmortem",
+        "./skills/observability-add"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "new-repo-onboarding",
+      "source": "./",
+      "description": "Spend the first hour mapping how a repository actually runs before editing it.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/onboard-to-repo",
+        "./skills/map-the-system",
+        "./skills/find-the-real-entrypoints",
+        "./skills/blast-radius-scan",
+        "./skills/legacy-code-archaeology"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "pr-safety",
+      "source": "./",
+      "description": "Review a pull request with risk framing, an evidence gate, runtime proof, and ranked findings.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/safe-pr-prep",
+        "./skills/gate-and-done",
+        "./skills/runtime-proof",
+        "./skills/truthforge",
+        "./skills/code-review",
+        "./skills/test-surface-skeptic",
+        "./skills/blast-radius-scan"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "security",
+      "source": "./",
+      "description": "Review diffs, config, untrusted model input, and third-party skills before they ship.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/security-review",
+        "./skills/secrets-and-config-audit",
+        "./skills/prompt-injection-hardening",
+        "./skills/skill-security-scan",
+        "./skills/skill-intake-gate"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "ship",
+      "source": "./",
+      "description": "Upgrade, migrate, containerize, and explain a release with receipts instead of a vibe.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/dependency-upgrade",
+        "./skills/refactor-safely",
+        "./skills/ci-failure-triage",
+        "./skills/dockerize-and-deploy",
+        "./skills/release-notes-and-changelog",
+        "./skills/db-migration-safety",
+        "./skills/api-contract-check",
+        "./skills/docs-from-code"
+      ],
+      "category": "workflow"
+    },
+    {
+      "name": "testing",
+      "source": "./",
+      "description": "Add behavior tests, run a red-green loop, and challenge coverage that does not prove the claim.",
+      "version": "1.0.0",
+      "author": {
+        "name": "SlipstreamAI"
+      },
+      "skills": [
+        "./skills/write-real-tests",
+        "./skills/tdd-loop",
+        "./skills/fix-flaky-test",
+        "./skills/test-surface-skeptic",
+        "./skills/runtime-proof",
+        "./skills/frontend-ui-verify"
+      ],
+      "category": "workflow"
+    }
+  ]
+}
