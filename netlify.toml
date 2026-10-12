@@ -1,0 +1,9 @@
+# Netlify deploy. Connect the GitHub repo; these settings are the build.
+# Do not use GitHub Pages for this site.
+
+[build]
+  command = "cd site && npm ci && npm run build"
+  publish = "site/dist"
+
+[build.environment]
+  NODE_VERSION = "22"

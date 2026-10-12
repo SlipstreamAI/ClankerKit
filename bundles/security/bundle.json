@@ -1,0 +1,14 @@
+{
+  "name": "security",
+  "title": "Security",
+  "description": "Review diffs, config, untrusted model input, and third-party skills before they ship.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "security-review",
+    "secrets-and-config-audit",
+    "prompt-injection-hardening",
+    "skill-security-scan",
+    "skill-intake-gate"
+  ]
+}

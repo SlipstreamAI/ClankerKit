@@ -1,0 +1,47 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadCatalog, repo } from "../../lib/content";
+
+export function getStaticPaths() {
+  return loadCatalog().bundles.map((bundle) => ({
+    params: { name: bundle.name },
+    props: { name: bundle.name },
+  }));
+}
+
+const { name } = Astro.props;
+const catalog = loadCatalog();
+const bundle = catalog.bundles.find((item) => item.name === name);
+if (!bundle) {
+  throw new Error(`Missing bundle ${name}`);
+}
+const skills = bundle.skills
+  .map((skillName) => catalog.skills.find((skill) => skill.name === skillName))
+  .filter((skill) => skill !== undefined);
+const claude = `/plugin marketplace add ${repo}\n/plugin install ${bundle.name}@clankerkit`;
+---
+
+<Base title={`${bundle.title} · ClankerKit`} description={bundle.description}>
+  <main class="mx-auto max-w-6xl px-5 py-10" data-pagefind-body>
+    <p class="font-mono text-xs uppercase tracking-widest">Bundle</p>
+    <h1 class="mt-2 font-display text-5xl">{bundle.title}</h1>
+    <p class="mt-4 max-w-3xl text-xl">{bundle.description}</p>
+    <pre class="mt-6 max-w-3xl overflow-x-auto bg-plate p-4 font-mono text-sm text-card">{claude}</pre>
+    <button type="button" data-copy={claude} class="mt-3 border border-ink px-3 py-1 text-sm font-semibold">
+      Copy install
+    </button>
+    <h2 class="mt-10 font-display text-3xl">Skills in this pack</h2>
+    <ul class="mt-4 divide-y divide-line border-y border-line">
+      {
+        skills.map((skill) => (
+          <li class="grid gap-2 py-4 sm:grid-cols-[16rem_1fr]">
+            <a class="font-semibold text-link" href={`/skills/${skill.name}`}>
+              {skill.name}
+            </a>
+            <p>{skill.use_when}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Base>

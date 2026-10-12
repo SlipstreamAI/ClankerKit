@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "/og.svg" } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen font-sans text-ink">
+    <header class="border-b border-line bg-plate text-card">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
+        <a href="/" class="font-display text-3xl leading-none tracking-wide text-card">
+          Clanker<span class="text-mark">Kit</span>
+        </a>
+        <nav class="flex flex-wrap items-center gap-4 text-sm font-semibold uppercase tracking-wide">
+          <a class="hover:text-mark" href="/skills">Skills</a>
+          <a class="hover:text-mark" href="/bundles">Bundles</a>
+          <a class="hover:text-mark" href="/contribute">Contribute</a>
+          <a class="hover:text-mark" href="/catalog.json">Catalog</a>
+          <a
+            class="border border-mark px-2 py-1 text-mark hover:bg-mark hover:text-plate"
+            href="https://github.com/SlipstreamAI/ClankerKit"
+          >GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <slot />
+    <footer class="mt-16 border-t border-line">
+      <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-3 px-5 py-8 text-sm">
+        <p>Apache-2.0. Skills are instructions plus receipts, not a claim that a harness passed.</p>
+        <p class="font-mono text-xs">
+          <a href="/llms.txt">llms.txt</a>
+          ·
+          <a href="/rss.xml">RSS</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      function copyText(text: string): boolean {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.top = "0";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        let ok = false;
+        try {
+          ok = document.execCommand("copy");
+        } catch {
+          ok = false;
+        }
+        area.remove();
+        return ok;
+      }
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        const button = target.closest("button[data-copy], button[data-copy-target]");
+        if (!(button instanceof HTMLButtonElement)) return;
+        const fromTarget = button.dataset.copyTarget;
+        const source = fromTarget ? document.getElementById(fromTarget) : null;
+        const text =
+          source instanceof HTMLTextAreaElement ? source.value : button.dataset.copy || "";
+        const previous = button.textContent || "Copy";
+        const ok = copyText(text);
+        button.textContent = ok ? "Copied" : "Copy failed";
+        window.setTimeout(() => {
+          button.textContent = previous;
+        }, 1600);
+      });
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+        const tab = target.closest("[data-tab]");
+        if (!(tab instanceof HTMLButtonElement)) return;
+        const root = tab.closest("[data-tabs]");
+        if (!root) return;
+        const selected = tab.dataset.tab;
+        root.querySelectorAll("[data-tab]").forEach((node) => {
+          if (node instanceof HTMLButtonElement) {
+            node.setAttribute("aria-selected", String(node.dataset.tab === selected));
+          }
+        });
+        root.querySelectorAll("[data-panel]").forEach((node) => {
+          if (node instanceof HTMLElement) {
+            node.hidden = node.dataset.panel !== selected;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

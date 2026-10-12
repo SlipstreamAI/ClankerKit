@@ -1,0 +1,39 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadCatalog, repo } from "../../lib/content";
+
+const catalog = loadCatalog();
+---
+
+<Base title="Bundles · ClankerKit" description="Curated ClankerKit skill packs for pull requests, incidents, onboarding, testing, security, and release.">
+  <main class="mx-auto max-w-6xl px-5 py-10" data-pagefind-body>
+    <h1 class="font-display text-5xl">Bundles</h1>
+    <p class="mt-3 max-w-2xl text-lg">
+      Claude Code installs a bundle as a plugin. Other agents can copy the same skill list with
+      <span class="font-mono text-base">scripts/install.sh</span>.
+    </p>
+    <ul class="mt-8 grid gap-4">
+      {
+        catalog.bundles.map((bundle) => (
+          <li class="border border-line bg-card p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-3">
+              <a class="font-display text-4xl text-link" href={`/bundles/${bundle.name}`}>
+                {bundle.title}
+              </a>
+              <span class="font-mono text-xs">{bundle.skills.length} skills</span>
+            </div>
+            <p class="mt-2 max-w-3xl">{bundle.description}</p>
+            <pre class="mt-4 overflow-x-auto bg-plate p-3 font-mono text-xs text-card">{`/plugin install ${bundle.name}@clankerkit`}</pre>
+            <button
+              type="button"
+              class="mt-3 border border-ink px-3 py-1 text-sm"
+              data-copy={`/plugin marketplace add ${repo}\n/plugin install ${bundle.name}@clankerkit`}
+            >
+              Copy Claude install
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</Base>

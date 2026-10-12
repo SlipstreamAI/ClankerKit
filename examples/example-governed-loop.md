@@ -14,8 +14,8 @@ Fix an incident where runtime behavior fails while CI is green.
    - verify fix against runtime-relevant evidence
 4. `truthforge`
    - evaluate confidence quality and merge readiness
-5. `definition-of-done-check`
-   - confirm handoff completeness
+5. `gate-and-done`
+   - confirm evidence, gates, and handoff completeness
 
 ## Example run command text
 

@@ -1,0 +1,8 @@
+{
+  "name": "full-catalog",
+  "title": "Full catalog",
+  "description": "Every ClankerKit skill. Prefer a smaller bundle unless you want the whole catalog installed.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": "*"
+}

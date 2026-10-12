@@ -1,0 +1,30 @@
+name: Request a skill
+description: Ask for a skill the catalog does not cover.
+title: "Skill request: "
+body:
+  - type: textarea
+    id: job
+    attributes:
+      label: What job should the skill do?
+      description: One operating problem, not a theme.
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: When should an agent use it?
+      description: The situations that belong in the description's Use when clause.
+    validations:
+      required: true
+  - type: textarea
+    id: not
+    attributes:
+      label: When should it stay unused?
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: What receipt would prove the skill worked?
+    validations:
+      required: true

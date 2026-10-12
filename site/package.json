@@ -1,0 +1,19 @@
+{
+  "name": "clankerkit-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build && pagefind --site dist",
+    "preview": "astro preview --host 0.0.0.0 --port 4321"
+  },
+  "dependencies": {
+    "astro": "^5.14.1",
+    "marked": "^16.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "pagefind": "^1.4.0",
+    "tailwindcss": "^4.1.14"
+  }
+}

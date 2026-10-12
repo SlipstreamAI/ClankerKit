@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Contribute · ClankerKit"
+  description="How to add a ClankerKit skill: spec frontmatter, a Use when trigger, a handoff, and the validator."
+>
+  <main class="mx-auto max-w-3xl px-5 py-10" data-pagefind-body>
+    <h1 class="font-display text-5xl">Contribute a skill</h1>
+    <p class="mt-4 text-lg">
+      A skill earns a place here when it does one job, says when to use it, and returns a handoff with evidence.
+    </p>
+    <ol class="mt-6 list-decimal space-y-3 pl-5">
+      <li>Copy <span class="font-mono">templates/skill-template.md</span> to <span class="font-mono">skills/&lt;name&gt;/SKILL.md</span>.</li>
+      <li>Put category, status, tags, modes, version, and author under <span class="font-mono">metadata</span>.</li>
+      <li>Keep <span class="font-mono">allowed-tools</span> a space-separated string.</li>
+      <li>Start at status <span class="font-mono">experimental</span>.</li>
+      <li>Run <span class="font-mono">python scripts/validate_skills.py</span> and <span class="font-mono">python scripts/build_skill_catalog.py</span>.</li>
+    </ol>
+    <p class="mt-6">
+      Review uses <a class="text-link" href="/skills/skill-intake-gate">skill-intake-gate</a>. Scripts also get
+      <a class="text-link" href="/skills/skill-security-scan">skill-security-scan</a>.
+    </p>
+    <p class="mt-4">
+      The authoring rules live in the repository
+      <a class="text-link" href="https://github.com/SlipstreamAI/ClankerKit/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.
+      Open a skill request or a bad-trigger report from the GitHub issue templates.
+    </p>
+  </main>
+</Base>

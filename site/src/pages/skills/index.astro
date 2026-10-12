@@ -1,0 +1,157 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadCatalog } from "../../lib/content";
+
+const catalog = loadCatalog();
+const categories = [...new Set(catalog.skills.map((skill) => skill.category))].sort();
+const statuses = [...new Set(catalog.skills.map((skill) => skill.status))].sort();
+---
+
+<Base
+  title="Skills · ClankerKit"
+  description="Search and filter ClankerKit agent skills by category, status, and the job they do."
+>
+  <main class="mx-auto max-w-6xl px-5 py-10" data-pagefind-body>
+    <header class="max-w-3xl">
+      <h1 class="font-display text-5xl">Skills</h1>
+      <p class="mt-3 text-lg">
+        {catalog.skill_count} skills. The description is the trigger. Open a skill for the procedure,
+        the raw file, and install commands.
+      </p>
+    </header>
+
+    <div class="mt-8" id="search"></div>
+
+    <form class="mt-6 flex flex-wrap gap-2" id="filters" data-pagefind-ignore>
+      <label class="sr-only" for="list-filter">Filter the list</label>
+      <input
+        id="list-filter"
+        class="min-w-64 border border-line bg-card px-3 py-2"
+        type="search"
+        placeholder="Filter by name or trigger"
+      />
+      <select id="category-filter" class="border border-line bg-card px-3 py-2">
+        <option value="">All categories</option>
+        {categories.map((category) => <option value={category}>{category}</option>)}
+      </select>
+      <select id="status-filter" class="border border-line bg-card px-3 py-2">
+        <option value="">All statuses</option>
+        {statuses.map((status) => <option value={status}>{status}</option>)}
+      </select>
+      <select id="agent-filter" class="border border-line bg-card px-3 py-2">
+        <option value="npx">Show npx install</option>
+        <option value="claude">Show Claude Code install</option>
+        <option value="cursor">Show Cursor install</option>
+        <option value="codex">Show Codex install</option>
+        <option value="grok">Show Grok Build install</option>
+        <option value="copilot">Show Copilot install</option>
+      </select>
+    </form>
+
+    <p class="mt-4 font-mono text-xs" id="visible-count" data-pagefind-ignore></p>
+    <p class="mt-1 font-mono text-xs" id="agent-hint" data-pagefind-ignore></p>
+
+    <div class="mt-3 overflow-x-auto border border-line bg-card">
+      <table class="w-full min-w-[760px] text-left text-sm">
+        <thead class="bg-paper font-mono text-xs uppercase tracking-wide">
+          <tr>
+            <th class="px-3 py-2">Skill</th>
+            <th class="px-3 py-2">Category</th>
+            <th class="px-3 py-2">Status</th>
+            <th class="px-3 py-2">Use when</th>
+          </tr>
+        </thead>
+        <tbody id="skill-rows">
+          {
+            catalog.skills.map((skill) => (
+              <tr
+                class="border-t border-line align-top"
+                data-name={skill.name}
+                data-category={skill.category}
+                data-status={skill.status}
+                data-text={`${skill.name} ${skill.description} ${skill.tags.join(" ")}`.toLowerCase()}
+              >
+                <td class="px-3 py-3 font-semibold">
+                  <a class="text-link" href={`/skills/${skill.name}`}>
+                    {skill.name}
+                  </a>
+                </td>
+                <td class="px-3 py-3">{skill.category}</td>
+                <td class="px-3 py-3">
+                  <span class:list={["stamp", `stamp-${skill.status}`]}>{skill.status}</span>
+                </td>
+                <td class="px-3 py-3">{skill.use_when}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = document.querySelector("#category-filter");
+    const status = document.querySelector("#status-filter");
+    const agent = document.querySelector("#agent-filter");
+    const query = document.querySelector("#list-filter");
+    const rows = [...document.querySelectorAll("#skill-rows tr")];
+    const count = document.querySelector("#visible-count");
+    const hint = document.querySelector("#agent-hint");
+    const agentCommands: Record<string, string> = {
+      npx: "npx skills add SlipstreamAI/ClankerKit --skill <name>",
+      claude: "/plugin marketplace add SlipstreamAI/ClankerKit",
+      cursor: "npx skills add SlipstreamAI/ClankerKit --skill <name> --agent cursor",
+      codex: "npx skills add SlipstreamAI/ClankerKit --skill <name> --agent codex",
+      grok: "npx skills add SlipstreamAI/ClankerKit --skill <name> --agent grok",
+      copilot: "npx skills add SlipstreamAI/ClankerKit --skill <name> --agent github-copilot",
+    };
+
+    if (category instanceof HTMLSelectElement && params.get("category")) {
+      category.value = params.get("category") || "";
+    }
+    if (status instanceof HTMLSelectElement && params.get("status")) {
+      status.value = params.get("status") || "";
+    }
+    if (agent instanceof HTMLSelectElement && params.get("agent") && params.get("agent")! in agentCommands) {
+      agent.value = params.get("agent") || "npx";
+    }
+
+    function applyFilters() {
+      const categoryValue = category instanceof HTMLSelectElement ? category.value : "";
+      const statusValue = status instanceof HTMLSelectElement ? status.value : "";
+      const agentValue = agent instanceof HTMLSelectElement ? agent.value : "npx";
+      const needle = query instanceof HTMLInputElement ? query.value.trim().toLowerCase() : "";
+      let visible = 0;
+      for (const row of rows) {
+        if (!(row instanceof HTMLElement)) continue;
+        const matches =
+          (!categoryValue || row.dataset.category === categoryValue) &&
+          (!statusValue || row.dataset.status === statusValue) &&
+          (!needle || (row.dataset.text || "").includes(needle));
+        row.hidden = !matches;
+        if (matches) visible += 1;
+      }
+      if (count) count.textContent = `${visible} shown`;
+      if (hint) hint.textContent = agentCommands[agentValue] || agentCommands.npx;
+      const next = new URLSearchParams();
+      if (categoryValue) next.set("category", categoryValue);
+      if (statusValue) next.set("status", statusValue);
+      if (agentValue && agentValue !== "npx") next.set("agent", agentValue);
+      const path = next.toString() ? `${window.location.pathname}?${next}` : window.location.pathname;
+      window.history.replaceState(null, "", path);
+    }
+
+    for (const control of [category, status, query, agent]) {
+      control?.addEventListener("input", applyFilters);
+      control?.addEventListener("change", applyFilters);
+    }
+    applyFilters();
+
+    const pagefind = window as Window & { PagefindUI?: new (options: { element: string }) => unknown };
+    if (document.querySelector("#search") && pagefind.PagefindUI) {
+      new pagefind.PagefindUI({ element: "#search" });
+    }
+  </script>
+</Base>

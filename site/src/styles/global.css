@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-ink: #101820;
+  --color-plate: #172432;
+  --color-paper: #e7eef5;
+  --color-card: #f7fafc;
+  --color-mark: #e6b400;
+  --color-line: #c5d0db;
+  --color-ok: #146b45;
+  --color-bad: #8e2430;
+  --color-link: #1f5f99;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Tailwind's display utilities otherwise override the hidden attribute. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 220px),
+    var(--color-paper);
+  color: var(--color-ink);
+}
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid currentColor;
+  padding: 0.05rem 0.4rem 0.1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.stamp-experimental {
+  color: #8a5a00;
+}
+
+.stamp-provisional {
+  color: #1f5f99;
+}
+
+.stamp-stable {
+  color: var(--color-ok);
+}
+
+.stamp-deprecated {
+  color: var(--color-bad);
+}
+
+.prose-skill h1,
+.prose-skill h2,
+.prose-skill h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin-top: 1.4rem;
+}
+
+.prose-skill h1 {
+  font-size: 2rem;
+}
+
+.prose-skill h2 {
+  font-size: 1.45rem;
+  border-top: 1px solid var(--color-line);
+  padding-top: 0.8rem;
+}
+
+.prose-skill p,
+.prose-skill li {
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.prose-skill ul,
+.prose-skill ol {
+  padding-left: 1.2rem;
+}
+
+.prose-skill pre {
+  overflow-x: auto;
+  background: var(--color-plate);
+  color: #f4f7fb;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.prose-skill code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+
+.prose-skill a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.pagefind-ui {
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: #172432;
+  --pagefind-ui-text: #101820;
+  --pagefind-ui-background: #f7fafc;
+  --pagefind-ui-border: #c5d0db;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-font: "Source Sans 3", sans-serif;
+}

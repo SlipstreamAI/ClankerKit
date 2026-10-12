@@ -1,0 +1,4 @@
+offline = true
+include_fragments = true
+exclude_path = ["site/dist", "site/node_modules", "skills/catalog.json"]
+no_progress = true

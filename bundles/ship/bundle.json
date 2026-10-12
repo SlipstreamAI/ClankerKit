@@ -1,0 +1,17 @@
+{
+  "name": "ship",
+  "title": "Ship",
+  "description": "Upgrade, migrate, containerize, and explain a release with receipts instead of a vibe.",
+  "version": "1.0.0",
+  "category": "workflow",
+  "skills": [
+    "dependency-upgrade",
+    "refactor-safely",
+    "ci-failure-triage",
+    "dockerize-and-deploy",
+    "release-notes-and-changelog",
+    "db-migration-safety",
+    "api-contract-check",
+    "docs-from-code"
+  ]
+}

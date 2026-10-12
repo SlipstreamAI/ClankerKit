@@ -1,8 +1,9 @@
 * @SlipstreamAI
 
-/skills/governance/* @SlipstreamAI
-/skills/validation/* @SlipstreamAI
-/checks/* @SlipstreamAI
-/patterns/* @SlipstreamAI
-/.github/workflows/* @SlipstreamAI
-/scripts/* @SlipstreamAI
+/skills/ @SlipstreamAI
+/bundles/ @SlipstreamAI
+/checks/ @SlipstreamAI
+/patterns/ @SlipstreamAI
+/.github/workflows/ @SlipstreamAI
+/scripts/ @SlipstreamAI
+/site/ @SlipstreamAI
